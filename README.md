@@ -50,4 +50,3 @@ The fusion versions for visual enhancement have been updated in IVIF and MmIF.
 ```
 
 
-## Pytorch version is available at [here](https://github.com/hli1221/densefuse-pytorch) (FOR REFERENCE ONLY)
