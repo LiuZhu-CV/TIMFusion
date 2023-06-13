@@ -8,10 +8,8 @@
 
 Risheng Liu, Zhu Liu, Jinyuan Liu, Xin Fan, Zhongxuan Luo
 
-## Note
-In 'main.py' file, you will find how to run these codes.
 
-The evaluate methods which used in our paper are shown in 'analysis_MatLab'. And these methods are implemented by MatLab.
+
 
 ## Abstract
 Image fusion plays a key role in a variety of multi-sensor-based vision systems, especially for enhancing visual quality and/or extracting aggregated 
@@ -27,12 +25,15 @@ the flexibility and generalization ability of current fusion approaches.
     on different categories of image fusion problems and related downstream tasks (e.g., visual enhancement and semantic understanding) 
 substantiate the flexibility and effectiveness of our TIM. 
 
-## Searching
+### Data and checkpoints
+All the required files are in the *[links](https://drive.google.com/drive/folders/1X91RfVWWuI7hYTWY34pmE4y16VAMtAPT?usp=drive_link)*.
 
+## Searching
+ Please refer the IAS folder to find the details
 ## Training
 
 ## Testing
-
+The fusion versions for visual enhancement have been updated in IVIF and MmIF.
 
 ## Experimental results
 
