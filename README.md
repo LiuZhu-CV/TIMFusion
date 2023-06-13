@@ -47,6 +47,13 @@ The fusion versions for visual enhancement have been updated in IVIF and MmIF.
   journal={arXiv preprint arXiv:2305.15862},
   year={2023}
 }
+@inproceedings{liu2021searching,
+  title={Searching a hierarchically aggregated fusion architecture for fast multi-modality image fusion},
+  author={Liu, Risheng and Liu, Zhu and Liu, Jinyuan and Fan, Xin},
+  booktitle={Proceedings of the 29th ACM International Conference on Multimedia},
+  pages={1600--1608},
+  year={2021}
+}
 ```
 
 
