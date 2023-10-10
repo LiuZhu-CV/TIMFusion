@@ -60,34 +60,45 @@ if __name__ == '__main__':
     # utils.load(model_2, './fusion0128/weights_2_1049.pt')
     model_1 = model_1.eval()
     # model_2 = model_2.eval()
-    file_ = open('../TNO_test.txt', 'r')
-    lines = file_.readlines()
-    for line in lines:
+    # file_ = open('../TNO_test.txt', 'r')
+    # lines = file_.readlines()
+    ######### TNO road M3FD and MFNet
+    files = os.listdir("G:/2023-P/IJCAI_seg_detec/M3FD_Detection/ir/")
+    for file in files[1500:]:
 
-        pth1, pth2, new_h, new_w = line.split('>>')
-        print(pth1,pth2,new_h,new_w)
-        img_name = pth1.split('/')[-1].split('.')[0]
-        print(img_name)
-        im_input = cv2.imread( '.'+pth1)[:, :, 0]
-        new_h = int(new_h)
-        new_w = int(new_w)
+        # pth1, pth2, new_h, new_w = line.split('>>')
+        # print(pth1,pth2,new_h,new_w)
+        # img_name = pth1.split('/')[-1].split('.')[0]
+        # print(img_name)
+        # im_input = cv2.imread( '.'+pth1)[:, :, 0]
+        # new_h = int(new_h)
+        # new_w = int(new_w)
+        im_input = cv2.imread("G:/2023-P/IJCAI_seg_detec/M3FD_Detection/ir/"+file,0)
         im_input = np.array(im_input)[np.newaxis, np.newaxis, :] / 255.
+        # # im_input = np.array(im_input)[np.newaxis, np.newaxis, :] / 255.
         im_input = torch.tensor(im_input).type(torch.FloatTensor)
         lr = Variable(im_input, requires_grad=False).cuda()
 
-        im_input2 = cv2.imread('.'+ pth2)[:, :, 0]
-
+        im_input2 = cv2.imread("G:/2023-P/IJCAI_seg_detec/M3FD_Detection/vis11/"+file, 0)
         im_input2 = np.array(im_input2)[np.newaxis, np.newaxis, :] / 255.
+        # # im_input = np.array(im_input)[np.newaxis, np.newaxis, :] / 255.
         im_input2 = torch.tensor(im_input2).type(torch.FloatTensor)
-
         vis = Variable(im_input2, requires_grad=False).cuda()
-        print(np.shape(vis),np.shape(lr))
+
+        #
+        # im_input2 = cv2.imread('.'+ pth2)[:, :, 0]
+        #
+        # im_input2 = np.array(im_input2)[np.newaxis, np.newaxis, :] / 255.
+        # im_input2 = torch.tensor(im_input2).type(torch.FloatTensor)
+        #
+        # vis = Variable(im_input2, requires_grad=False).cuda()
+        # print(np.shape(vis),np.shape(lr))
         with torch.no_grad():
             fused_1 = model_1(vis,lr)
             # f_ir, f_vis, fused = model_2(lr,vis, fused_1)
             res = fused_1.data.cpu().numpy()
             _,c, h, w= np.shape(res)
-            torchvision.utils.save_image(fused_1[:,:,0:h-new_h,0:w-new_w],'./road_'+img_name+'.png')
+            torchvision.utils.save_image(fused_1,'H:/0/liuzhu_methods/MM21/M3FD/'+file)
         # res *= 255
         # res = res[0].transpose((1, 2, 0))
         # h,w,c = np.shape(res)
